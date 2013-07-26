@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   def show
   end
 
+
   private
+   
+    # Requires that :user be a key in the params Hash and
+ 		# only accept :name, :email, :password, and :password_confirmation attr
   	def user_params
   		params.require(@user).permit(:first_name, :last_name, :email,
   																 :password, :password_confirmation)
