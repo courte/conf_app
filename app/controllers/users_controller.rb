@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-  		# if saved
+  		flass[:success] = "Welcome to Woodrow Wilson Events!"
+  		redirect_to @user
   	else
-  		# redirect_to user#new
+  		render 'new'
   	end
   end
 
