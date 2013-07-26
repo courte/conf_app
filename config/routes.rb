@@ -1,4 +1,7 @@
 WwApp::Application.routes.draw do
+  resources :users
+  match '/signup', to: 'user#new', via: 'get'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
