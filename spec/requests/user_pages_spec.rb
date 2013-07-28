@@ -14,9 +14,9 @@ describe "UserPages" do
 
 		context "with valid information" do
 			before do
-				fill_in "First name",				with: "X"
-				fill_in "Last name",				with: "Ample"
-				fill_in "Email",						with: "x.ample@user.com"
+				fill_in "First name",				with: "Example"
+				fill_in "Last name",				with: "User"
+				fill_in "Email",						with: "user@example.com"
 				fill_in "Password",					with: "foobar00"
 				fill_in "Confirmation",			with: "foobar00"
 			end

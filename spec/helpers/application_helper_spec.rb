@@ -10,4 +10,5 @@ describe ApplicationHelper do
 		it "should include the base title" do
 			expect(full_title("foo")).to match(/^Woodrow Wilson Events/)
 		end
+	end
 end
