@@ -49,6 +49,7 @@ class UsersController < ApplicationController
  		# only accept :name, :email, :password, and :password_confirmation attr
   	def user_params
   		params.require(:user).permit(:first_name, :last_name, :email, :job_title,
+                                  :employer, :bio, :current_project, :privacy,
   																 :password, :password_confirmation)
   	end
 end

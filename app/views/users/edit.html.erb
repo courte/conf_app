@@ -1,0 +1,36 @@
+<% provide(:title, 'Edit your profile') %>
+<h1>Edit your profile</h1>
+
+<div class="row">
+	<div class= "span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :first_name %>
+			<%= f.text_field :first_name %>
+
+			<%= f.label :last_name %>
+			<%= f.text_field :last_name %>
+
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+
+			<%= f.label :job_title %>
+			<%= f.text_field :job_title %>
+
+			<%= f.label :employer %>
+			<%= f.text_field :employer %>
+
+			<%= f.label :bio %>
+			<%= f.text_area :bio %>
+
+			<%= f.label :current_project %>
+			<%= f.text_field :current_project %>
+
+			<%= check_box_tag(:privacy) %>
+			<%= label_tag(:privacy, "I do not want my email shared with conference participants.") %>
+			
+			<%= f.submit "Submit changes", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

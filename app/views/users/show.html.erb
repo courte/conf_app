@@ -10,7 +10,11 @@
 		<p>Company/Employer: <%= @user.employer %></p>
 		<p>Bio: <%= @user.bio %></p>
 		<p>Current project: <%= @user.current_project %></p>
-		<p>Privacy: <%= @user.privacy %></p>
+		<%if @user.privacy == true %>
+		<p>Your email is currently <strong>private.</strong></p>
+		<%else%>
+		<p>BOOMSHAKALAKA</p>
+		<%end%>
 		<p><%= link_to "Edit your info", edit_user_path(@user) %></p>
 	</div>
 </div>

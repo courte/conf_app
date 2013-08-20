@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130812191558) do
     t.string   "employer"
     t.text     "bio"
     t.string   "current_project"
-    t.boolean  "privacy"
+    t.boolean  "privacy"          :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
