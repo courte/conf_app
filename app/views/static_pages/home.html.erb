@@ -1,26 +1,25 @@
 <% if signed_in?  %>
-<div class="center hero-unit">
-	<h1>Agenda</h1>
-</div>
-<div class="center hero-unit">
-	<h1>Speakers</h1>
-</div>
-<div class="center hero-unit">
-	<h1>Attendees</h1>
-</div>
-<div class="center hero-unit">
-	<h1>Map</h1>
-</div>
+	<div class="center hero-unit">
+		<h1>Agenda</h1>
+	</div>
+	<div class="center hero-unit">
+		<h1>Speakers</h1>
+	</div>
+	<div class="center hero-unit">
+		<h1>Attendees</h1>
+	</div>
+	<div class="center hero-unit">
+		<h1>Map</h1>
+	</div>
+
 <% else %>
+	<div class="center hero-unit">
 
-<div class="center hero-unit">
+		<h1>Welcome to the Woodrow Wilson Event app!</h1>
+		<h2>
+		  This is the home page.
+		</h2>
 
-	<h1>Welcome to the Woodrow Wilson Event app!</h1>
-	<h2>
-	  This is the home page.
-	</h2>
-
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
-
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
 <% end %>
