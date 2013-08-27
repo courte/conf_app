@@ -1,15 +1,17 @@
 class Meeting < ActiveRecord::Base
-  attr_accessible :description, :end_time, :name, :start_time
+  before_save :create_duration
 
-  validates :name, presence: true
+  validates :title,     presence: true
+  validates :location, presence: true
 
-  VALID_DATETIME_REGEX = /\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}:[0]{2}\z/i
+  VALID_DATETIME_REGEX = /\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4}\z/
   validates :start_time,	presence: true,
   												format: { with: VALID_DATETIME_REGEX }
   validates :end_time,		presence: true,
   												format: { with: VALID_DATETIME_REGEX }
+  validates_is_after :end_time, :after => :start_time
 
-  def Meeting.length
-  	:start_time - :end_time
+  def create_duration
+  	self.duration = (self.end_time - self.start_time)
   end
 end
