@@ -1,0 +1,16 @@
+<% provide(:title, @meeting.title) %>
+
+<div class="row">
+	<div class="span4">
+		<section>
+			<h1><%= @meeting.title %></h1>
+		</section>
+		<p>Title: <%= @meeting.title %></p>
+		<p>Location: <%= @meeting.location %></p>
+		<p>Start time: <%= @meeting.start_time %></p>
+		<p>End time: <%= @meeting.end_time %></p>
+		<p>Description: <%= @meeting.description %></p>
+		
+		<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) %></p>
+	</div>
+</div>

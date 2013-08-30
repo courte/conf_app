@@ -1,0 +1,18 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :location %>
+<%= f.text_field :location %>
+
+<%= f.label :description %>
+<%= f.text_area :description %>
+
+<%= f.label :start_time %>
+<%= f.date_select :start_time, :use_short_month => true %>
+<%= f.time_select :start_time, :minute_step => 5, :ignore_date => true %>
+
+<%= f.label :end_time %>
+<%= f.date_select :end_time, :use_short_month => true %>
+<%= f.time_select :end_time, :minute_step => 5, :ignore_date => true %>

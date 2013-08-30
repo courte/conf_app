@@ -4,11 +4,11 @@ class Meeting < ActiveRecord::Base
   validates :title,     presence: true
   validates :location, presence: true
 
-  VALID_DATETIME_REGEX = /\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4}\z/
-  validates :start_time,	presence: true,
-  												format: { with: VALID_DATETIME_REGEX }
-  validates :end_time,		presence: true,
-  												format: { with: VALID_DATETIME_REGEX }
+  # VALID_DATETIME_REGEX = /\A\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4}\z/
+  validates :start_time,	presence: true
+  												# , format: { with: VALID_DATETIME_REGEX}
+  validates :end_time,		presence: true
+  												# , format: { with: VALID_DATETIME_REGEX }
   validates_is_after :end_time, :after => :start_time
 
   def create_duration

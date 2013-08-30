@@ -24,9 +24,12 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 	end
 
+	def destroy
+	end
+
 	private
 		def meeting_params
-			params.require(:meeting).permit(:title, :location, :start_time, :end_time,
-																			:description, :duration)
+			params.require(:meeting).permit(:title, :location, :start_time,
+																			:end_time, :description, :duration)
 		end
 end

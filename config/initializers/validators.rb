@@ -18,7 +18,7 @@ ActiveRecord::Base.class_eval do
 				end
 
 				unless after_time.nil?
-					record.errors.add(attr_name, 'must be after' + 
+					record.errors.add(attr_name, 'must be after ' + 
 					configuration[:after].to_s) if value <= after_time
 				end
 			end
