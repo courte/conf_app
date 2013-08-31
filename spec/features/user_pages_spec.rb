@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "UserPages" do
 
-	# describe "signup page" do
+	# TODO: describe "signup page" do end
 
-	# describe "profile page" do
+	# TODO: describe "profile page" do end
 
 	describe "signup" do
 		before { visit signup_path }

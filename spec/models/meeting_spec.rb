@@ -5,7 +5,7 @@ describe Meeting do
 																	location: "Here",
 																	description: "Be me!",
 																	start_time: Time.now,
-																	end_time: Time.now + 1.day) }
+																	end_time: Time.now + 1.day ) }
 
 	subject { @meeting }
 
@@ -25,7 +25,7 @@ describe Meeting do
   	it { should_not be_valid }
   end
 
-  describe "start_time and end_time" do
+  describe "times attributes" do
 	  context "when start_time is blank" do
 		 	before { @meeting.start_time = "" }
 		 	it { should_not be_valid }
@@ -36,8 +36,26 @@ describe Meeting do
 		 	it { should_not be_valid }
 		end
 
+		context "when start_time is before current time" do
+			
+			context "when creating" do
+				# before { @meeting.start_time = Time.now - 1.day }
+				# it { should_not be_valid }
+			end
+
+			context "if editing" do
+				# TODO
+				# before do
+					# @meeting.save
+					# @meeting.reload.start_time = Time.now - 1.day
+				# end
+				
+				# it { should be_valid }
+			end
+		end
+
 		context "when end_time is < start_time" do
-		 	before { @meeting.end_time = @meeting.start_time - 1.day }
+			before { @meeting.end_time = @meeting.start_time - 1.day }
 		 	it { should_not be_valid }
 		end
 

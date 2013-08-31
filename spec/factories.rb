@@ -8,8 +8,8 @@ FactoryGirl.define do
 	end
 
 	factory :meeting do
-		name 						"Meeting Title"
-		location				"Here"
+		name 						"Title"
+		location				"Here, There, Everywhere"
 		description			"This meeting blah blah blah blah blah."
 		start_time			Time.now
 		end_time				Time.now + 3.hours + 30.minutes
