@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "Woodrow Wilson Events", '#', id: "logo" %>
+			<%= link_to "Woodrow Wilson Events", root_path, id: "logo" %>
 			<nav>
 				<ul class="nav pull-right">
 					<% if signed_in? && current_user.admin? %>
