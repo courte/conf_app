@@ -2,6 +2,33 @@ require 'spec_helper'
 
 describe "UserPages" do
 
+	subject { page }
+
+	describe "index" do
+		let(:user) { FactoryGirl.create(:user) }
+		before(:each) do
+			sign_in user
+			visit users_path
+		end
+
+		it { should have_title('Attendees') }
+		it { should have_content('Attendees') }
+
+		describe "pagination" do
+
+			before(:all) { 30.times { FactoryGirl.create(:user) } }
+			after(:all) { User.delete_all }
+
+			it { should have_selector('div.pagination') }
+
+			it "should list each user" do
+				User.paginate(page: 1).each do |user|
+					expect(page).to have_selector('li', text: user.name)
+				end
+			end
+		end
+	end
+
 	# TODO: describe "signup page" do end
 
 	# TODO: describe "profile page" do end

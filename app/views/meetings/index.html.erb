@@ -1,2 +1,18 @@
 <% provide(:title, 'Agenda') %>
 <h1>Agenda</h1>
+
+<%= will_paginate %>
+
+<ul class="meetings">
+	<% @meetings.each do |meeting| %>
+		<li>
+			<p>
+				<em><%= meeting.start_time %></em><br />
+				<b><%= link_to meeting.title, meeting %></b><br />
+				<%= meeting.location %>
+			</p>
+		</li>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

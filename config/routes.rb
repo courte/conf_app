@@ -3,10 +3,11 @@ WwApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :meetings
   root :to => 'static_pages#home'
-  match '/signup',  to: 'users#new',         via: 'get'
-  match '/signin',  to: 'sessions#new',      via: 'get'
-  match '/signout', to: 'sessions#destroy',  via: 'delete'
-  match 'agenda',   to: 'meetings#index',    via: 'get'
+  match '/signup',    to: 'users#new',         via: 'get'
+  match '/signin',    to: 'sessions#new',      via: 'get'
+  match '/signout',   to: 'sessions#destroy',  via: 'delete'
+  match '/agenda',    to: 'meetings#index',    via: 'get'
+  match '/attendees', to: 'users#index',       via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

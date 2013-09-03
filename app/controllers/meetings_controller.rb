@@ -1,5 +1,8 @@
 class MeetingsController < ApplicationController
+	# before_action :admin_user, only: [:new, :create, :edit, :update]
+
 	def index
+		@meetings = Meeting.paginate(page: params[:page])
 	end
 
 	def new

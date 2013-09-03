@@ -1,4 +1,4 @@
-include 'spec_helper'
+require 'spec_helper'
 
 describe "Meeting pages" do
 	
@@ -7,8 +7,8 @@ describe "Meeting pages" do
 	end
 
 	describe "edit" do
-		let(:meeting) { FactoryGirl.create(:meeting) }
-		before { visit edit_meeting_path(meeting) }
+		# let(:meeting) { FactoryGirl.create(:meeting) }
+		# before { visit edit_meeting_path(meeting) }
 
 		describe "page" do
 		end

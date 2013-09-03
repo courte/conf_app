@@ -40,4 +40,29 @@ describe "AuthenticationPages" do
 			end
 		end
 	end
+
+	describe "authorization" do
+
+		describe "for non-signed-in users" do
+
+			describe "in the Meetings controller" do
+
+				describe "visiting the agenda" do
+					before { visit agenda_path }
+					it { should have_title('Sign in') }
+				end
+			end
+		end
+
+		describe "for signed-in users" do
+
+			describe "in the Meetings controller" do
+
+				describe "visiting the agenda" do
+					before { visit agenda_path }
+					it { should have_title('Agenda') }
+				end
+			end
+		end
+	end
 end

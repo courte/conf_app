@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :skip_password_attribute, only: :update
+  
   def index
+    @users = User.paginate(page: params[:page])
   end
 
   def new
