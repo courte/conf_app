@@ -3,7 +3,7 @@ namespace :db do
 	task populate: :environment do
 		admin = User.create!(first_name: "Example",
 								 last_name: "User",
-								 email: "example@example.com",
+								 email: "example.user@example.com",
 								 password: "foobar00",
 								 password_confirmation: "foobar00",
 								 admin: true)
@@ -20,25 +20,23 @@ namespace :db do
 									 password_confirmation: password)
 		end
 
-		# time = (Time.now + 30.days).to_s
+		Meeting.create!(title: "Meeting Title",
+										location: "There",
+										description: "blahblah",
+										start_time: Time.parse("2014-02-06 07:00"),
+										end_time: Time.parse("2014-02-06 08:00") )
+		20.times do |n|
+			title = "Meeting Title #{n+1}"
+			location = "There #{n+1}"
+			description = Faker::Lorem.paragraph
+			start_time = ( Time.parse("2014-02-06 07:00") + n.hours)
+			end_time = ( Time.parse("2014-02-06 07:00") + 1.hour + n.hours )
 
-		# Meeting.create!(title: "Meeting Title",
-										# location: "There",
-										# description: "blahblah"
-										# start_time: Time.now,
-										# end_time: Time.now )
-		# 20.times do |n|
-			# title = "Meeting Title #{n+1}"
-			# location = "There #{n+1}"
-			# description = "blahblah " * n
-			# start_time = (time + n.hours).to_s
-			# end_time = (time + n.hours + 1.hour).to_s
-
-			# Meeting.create!(title: title,
-											# location: location,
-											# description: description,
-											# start_time: start_time,
-											# end_time: end_time)
-		# end
+			Meeting.create!(title: title,
+											location: location,
+											description: description,
+											start_time: start_time,
+											end_time: end_time)
+		end
 	end
 end
