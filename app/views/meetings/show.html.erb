@@ -11,6 +11,6 @@
 		<p>End time: <%= @meeting.end_time %></p>
 		<p>Description: <%= @meeting.description %></p>
 		
-		<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) %></p>
+		<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) if current_user.admin? %></p>
 	</div>
 </div>
