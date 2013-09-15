@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-	# before_action :admin_user, only: [:new, :create, :edit, :update]
+	before_filter :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
 		@meetings = Meeting.page(params[:page]).per_page(10)

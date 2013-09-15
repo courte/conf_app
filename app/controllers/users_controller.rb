@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user,          only: [:edit, :update]
+  before_filter :correct_user,            only: [:edit, :update]
+  before_filter :admin_user,              only: :destroy
   before_filter :skip_password_attribute, only: :update
   
   def index
@@ -39,11 +42,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def skip_password_attribute
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.except!(:password, :password_confirmation)
-    end
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted."
+    redirect_to users_url
   end
+
   
   private
 
@@ -54,4 +58,21 @@ class UsersController < ApplicationController
                                    :employer, :bio, :current_project, :privacy,
   																 :password, :password_confirmation)
   	end
+
+    # Before actions
+
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in to access that page." unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def skip_password_attribute
+      if params[:password].blank? && params[:password_confirmation].blank?
+        params.except!(:password, :password_confirmation)
+      end
+    end
 end

@@ -1,0 +1,12 @@
+<li>
+	<p>
+		<em><%= meeting.start_time %></em><br />
+		<b><%= link_to meeting.title, meeting %></b><br />
+		<%= meeting.location %><br />
+		<% if current_user.admin? %>
+			<%= link_to "edit this meeting", edit_meeting_path(meeting) %> | 
+			<%= link_to "delete", meeting, method: :delete,
+														data: { confirm: "Are you sure that you want to delete this meeting?" } %>
+		<% end %>
+	</p>
+</li>

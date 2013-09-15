@@ -4,15 +4,7 @@
 <%= will_paginate(:class => "center pagination") %>
 
 <ul class="meetings">
-	<% @meetings.each do |meeting| %>
-		<li>
-			<p>
-				<em><%= meeting.start_time %></em><br />
-				<b><%= link_to meeting.title, meeting %></b><br />
-				<%= meeting.location %>
-			</p>
-		</li>
-	<% end %>
+	<%= render @meetings %>
 </ul>
 
 <%= will_paginate(:class => "center pagination") %>
