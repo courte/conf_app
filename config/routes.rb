@@ -8,6 +8,7 @@ WwApp::Application.routes.draw do
   match '/signout',   to: 'sessions#destroy',  via: 'delete'
   match '/agenda',    to: 'meetings#index',    via: 'get'
   match '/attendees', to: 'users#index',       via: 'get'
+  match '/maps',      to: 'static_pages#maps', via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
