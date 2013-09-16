@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
 	before_filter :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
-		@meetings = Meeting.page(params[:page]).per_page(10)
+		@meetings = Meeting.order('start_time ASC, duration DESC').page(params[:page]).per_page(10)
 	end
 
 	def new
@@ -38,6 +38,9 @@ class MeetingsController < ApplicationController
 	end
 
 	def destroy
+		Meeting.find(params[:id]).destroy
+    flash[:success] = "Meeting deleted."
+    redirect_to meetings_url
 	end
 
 	private
