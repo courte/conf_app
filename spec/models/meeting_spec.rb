@@ -14,6 +14,7 @@ describe Meeting do
   it { should respond_to(:location) }
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
+  it { should respond_to(:speakers) }
 
   context "when title is blank" do
   	before { @meeting.title = "" }
@@ -98,5 +99,22 @@ describe Meeting do
   describe "duration" do
 		before { @meeting.save }
 		its(:duration) { should_not be_blank }
+	end
+
+	describe "speaker associations" do
+		before do
+			@meeting.save
+			FactoryGirl.create(:speaker, meeting: @meeting)
+			FactoryGirl.create(:speaker, meeting: @meeting)
+		end
+
+		it "should destroy associated speakers" do
+			speakers = @meeting.speakers.to_a
+			@meeting.destroy
+			expect(speakers).not_to be_empty
+			speakers.each do |speaker|
+				expect(Speaker.where(id: speaker.id)).to be_empty
+			end
+		end
 	end
 end

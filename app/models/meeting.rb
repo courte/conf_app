@@ -1,4 +1,6 @@
 class Meeting < ActiveRecord::Base
+  has_many :speakers, dependent: :destroy
+
   before_save :create_duration
 
   validates :title,     presence: true

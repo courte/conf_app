@@ -38,5 +38,12 @@ namespace :db do
 											start_time: start_time,
 											end_time: end_time)
 		end
+
+		meetings = Meeting.all(limit: 10)
+		4.times do
+			name = Faker::Name.first_name + " " + Faker::Name.last_name
+			bio = Faker::Lorem.sentence(5)
+			meetings.each { |meeting| meeting.speakers.create!(name: name, bio: bio, moderator: false) }
+		end
 	end
 end

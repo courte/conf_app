@@ -1,16 +1,23 @@
 <% provide(:title, @meeting.title) %>
 
 <div class="row">
-	<div class="span4 offset4">
+	<aside class="span4 offset1">
 		<section>
 			<h1><%= @meeting.title %></h1>
+			<p>Title: <%= @meeting.title %></p>
+			<p>Location: <%= @meeting.location %></p>
+			<p>Start time: <%= @meeting.start_time %></p>
+			<p>End time: <%= @meeting.end_time %></p>
+			<p>Description: <%= @meeting.description %></p>
+			<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) if current_user.admin? %></p>
 		</section>
-		<p>Title: <%= @meeting.title %></p>
-		<p>Location: <%= @meeting.location %></p>
-		<p>Start time: <%= @meeting.start_time %></p>
-		<p>End time: <%= @meeting.end_time %></p>
-		<p>Description: <%= @meeting.description %></p>
-		
-		<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) if current_user.admin? %></p>
+	</aside>
+	<div class="offset2 span4">
+		<% if @meeting.speakers.any? %>
+			<h3>Speakers (<%= @meeting.speakers.count %>)</h3>
+			<ol class="speakers">
+				<%= render @speakers %>
+			</ol>
+		<% end %>
 	</div>
 </div>

@@ -21,6 +21,7 @@ class MeetingsController < ApplicationController
 
 	def show
 		@meeting = Meeting.find(params[:id])
+		@speakers = @meeting.speakers
 	end
 
 	def edit
