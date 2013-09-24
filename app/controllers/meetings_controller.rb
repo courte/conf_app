@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+	before_filter :signed_in_user
 	before_filter :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
 	def index

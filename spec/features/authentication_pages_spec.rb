@@ -16,7 +16,7 @@ describe "AuthenticationPages" do
 			it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
 			describe "after visiting another page" do
-				before { click_link "Home" }
+				before { click_link "Woodrow Wilson Events" }
 				it { should_not have_selector('div.alert.alert-error') }
 			end
 		end
@@ -52,9 +52,30 @@ describe "AuthenticationPages" do
 					it { should have_title('Sign in') }
 				end
 			end
+
+			describe "in the Speakers controller" do
+
+				describe "viewing the index" do
+					before { visit speakers_path }
+					it { should have_title('Speakers') }
+				end
+
+				describe "submitting to the create action" do
+					before { post speakers_path }
+					specify { expect(response).to redirect_to(signin_path) }
+				end
+
+				describe "submitting to the destroy action" do
+					before { delete speaker_path(FactoryGirl.create(:speaker)) }
+					specify { expect(response).to redirect_to(signin_path) }
+				end
+			end
 		end
 
 		describe "for signed-in users" do
+
+			let(:user) { FactoryGirl.create(:user) }
+			before { sign_in user, no_capybara: true }
 
 			describe "in the Meetings controller" do
 

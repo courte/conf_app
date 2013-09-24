@@ -2,11 +2,13 @@ WwApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :meetings
+  resources :speakers, only: [:index, :create, :destroy]
   root :to => 'static_pages#home'
   match '/signup',    to: 'users#new',         via: 'get'
   match '/signin',    to: 'sessions#new',      via: 'get'
   match '/signout',   to: 'sessions#destroy',  via: 'delete'
   match '/agenda',    to: 'meetings#index',    via: 'get'
+  match '/speakers',  to: 'speakers#index',    via: 'get'
   match '/attendees', to: 'users#index',       via: 'get'
   match '/maps',      to: 'static_pages#maps', via: 'get'
 

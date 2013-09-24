@@ -1,0 +1,10 @@
+<% provide(:title, 'Speakers') %>
+<h1>Speakers</h1>
+
+<%= will_paginate(:class => "center pagination") %>
+
+<ul class="speakers">
+	<%= render @speakers %>
+</ul>
+
+<%= will_paginate(:class => "center pagination") %>
