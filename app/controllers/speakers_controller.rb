@@ -6,12 +6,12 @@ class SpeakersController < ApplicationController
 	end
 
 	def create
-		# @speaker = meeting[:id].speaker
-		#if @speaker.save
+		# @speaker = @meeting.speaker.build(speaker_params)
+		# if @speaker.save
 			# flash[:success] = "Speaker saved!"
-			# redirect_to root_url
+			# redirect_to meeting_path
 		# else
-			# render 'static_pages/home'
+			# render meeting_path
 		# end
 	end
 

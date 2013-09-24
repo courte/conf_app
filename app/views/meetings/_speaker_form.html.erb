@@ -1,0 +1,9 @@
+<%= form_for(@speaker) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_field :name, 		placeholder: "Mrs. Speaker Name X" %>
+		<%= f.text_area  :bio, 			placeholder: "Speaker bio" %>
+		<%= f.check_box  :moderator,	placeholder: "Moderator?" %>
+	</div>
+	<%= f.submit "Save Speaker", class: "btn btn-large btn-primary" %>
+<% end %>

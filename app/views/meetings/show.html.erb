@@ -11,6 +11,13 @@
 			<p>Description: <%= @meeting.description %></p>
 			<p><%= link_to "Edit this meeting", edit_meeting_path(@meeting) if current_user.admin? %></p>
 		</section>
+		<% if current_user.admin? %>
+			<div class="row">
+				<div class="span 4, offset1">
+					<%= render 'speaker_form' %>
+				</div>
+			</div>
+		<% end %>
 	</aside>
 	<div class="offset2 span4">
 		<% if @meeting.speakers.any? %>
@@ -21,3 +28,4 @@
 		<% end %>
 	</div>
 </div>
+
