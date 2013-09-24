@@ -6,13 +6,14 @@ class SpeakersController < ApplicationController
 	end
 
 	def create
-		# @speaker = @meeting.speaker.build(speaker_params)
-		# if @speaker.save
-			# flash[:success] = "Speaker saved!"
-			# redirect_to meeting_path
-		# else
-			# render meeting_path
-		# end
+		@meeting = Meeting.find(speaker_params[:meeting_id])
+		@speaker = @meeting.speakers.build(speaker_params)
+		if @speaker.save
+			flash[:success] = "Speaker saved!"
+			redirect_to @meeting
+		else
+			redirect_to @meeting
+		end
 	end
 
 	def destroy
