@@ -13,8 +13,6 @@
 		
 		<% if @user.privacy == true %>
 			<p>Your email is currently <strong>private</strong>.</p>
-		<% else %>
-			<p>BOOMSHAKALAKA</p>
 		<% end %>
 		
 		<p><%= link_to "Edit your info", edit_user_path(@user) %></p>
