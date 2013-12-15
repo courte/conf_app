@@ -1,3 +1,7 @@
 class Engagement < ActiveRecord::Base
-  attr_accessible :meeting_id, :speaker_id
+  belongs_to :speaker
+  belongs_to :meeting
+
+  validates :speaker_id, presence: true
+  validates :meeting_id, presence: true
 end

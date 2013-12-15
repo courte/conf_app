@@ -15,6 +15,7 @@ describe Speaker do
   it { should respond_to(:name) }
   it { should respond_to(:bio) }
   it { should respond_to(:moderator) }
+  it { should respond_to(:engagements) }
   it { should respond_to(:meeting_id) }
   it { should respond_to(:meeting) }
   its(:meeting) { should eq meeting }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211014517) do
+ActiveRecord::Schema.define(:version => 20131215195011) do
 
   create_table "engagements", :force => true do |t|
     t.integer  "speaker_id"
@@ -39,13 +39,10 @@ ActiveRecord::Schema.define(:version => 20131211014517) do
     t.string   "name"
     t.string   "bio"
     t.boolean  "moderator"
-    t.integer  "meeting_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "speakers", ["meeting_id", "moderator"], :name => "index_speakers_on_meeting_id_and_moderator"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

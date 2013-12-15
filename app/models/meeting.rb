@@ -1,5 +1,6 @@
 class Meeting < ActiveRecord::Base
-  has_many :speakers #,  through: :engagements, dependent: :destroy
+  has_many :engagements, dependent: :destroy
+  has_many :speakers, through: :engagements
 
   before_save :create_duration
 

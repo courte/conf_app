@@ -19,6 +19,5 @@ FactoryGirl.define do
 		name 			"Leo Spaceman, M.D."
 		bio				"Thanks, Dr. Spaceman!"
 		moderator	false
-		meeting
 	end
 end
