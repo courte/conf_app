@@ -1,5 +1,5 @@
 class Meeting < ActiveRecord::Base
-  has_many :speakers, dependent: :destroy
+  has_many :speakers #,  through: :engagements, dependent: :destroy
 
   before_save :create_duration
 
@@ -17,4 +17,4 @@ class Meeting < ActiveRecord::Base
   def create_duration
   	self.duration = (self.end_time - self.start_time)
   end
-end  
+end

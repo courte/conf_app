@@ -34,6 +34,9 @@ gem 'jquery-rails'
 group :test do
 	gem 'capybara'
 	gem 'factory_girl_rails'
+	gem 'shoulda-matchers'
+	gem 'guard'
+	gem 'spork'
 end
 
 # To use ActiveModel has_secure_password

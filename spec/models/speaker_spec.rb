@@ -11,6 +11,7 @@ describe Speaker do
 
   subject { @speaker }
 
+  # Attributes
   it { should respond_to(:name) }
   it { should respond_to(:bio) }
   it { should respond_to(:moderator) }
@@ -18,15 +19,8 @@ describe Speaker do
   it { should respond_to(:meeting) }
   its(:meeting) { should eq meeting }
 
+  # Validations
   it { should be_valid }
-
-  context "when meeting_id is not present" do
-  	before { @speaker.meeting_id = nil }
-  	it { should_not be_valid }
-  end
-
-  context "when name is not present" do
-  	before { @speaker.name = "" }
-  	it { should_not be_valid }
-  end
+  it { should validate_presence_of(:meeting_id) }
+  it { should validate_presence_of(:name) }
 end
