@@ -8,7 +8,7 @@ FactoryGirl.define do
 	end
 
 	factory :meeting do
-		sequence(:title)	{ |n| "Meeting #{n}" }
+		sequence(:title)	{ |n| "How To Be Awesome #{n}" }
 		location					"Here, There, Everywhere"
 		description				"This meeting blah blah blah blah blah."
 		start_time				Time.now

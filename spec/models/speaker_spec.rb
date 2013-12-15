@@ -2,11 +2,8 @@ require 'spec_helper'
 
 describe Speaker do
   
-  let(:meeting) { FactoryGirl.create(:meeting) }
   before do
-  	@speaker = meeting.speakers.build(name: "Dr. Mantis Toboggan",
-  												 						bio: "Lorem impsum blah blah blah",
-  												 						moderator: false)
+  	@speaker = FactoryGirl.create(:speaker)
   end
 
   subject { @speaker }
@@ -16,12 +13,32 @@ describe Speaker do
   it { should respond_to(:bio) }
   it { should respond_to(:moderator) }
   it { should respond_to(:engagements) }
-  it { should respond_to(:meeting_id) }
-  it { should respond_to(:meeting) }
-  its(:meeting) { should eq meeting }
+  it { should respond_to(:meetings) }
+  it { should respond_to(:schedule!) }
+  it { should respond_to(:scheduled?) }
+  it { should respond_to(:unschedule!) }
 
   # Validations
   it { should be_valid }
-  it { should validate_presence_of(:meeting_id) }
   it { should validate_presence_of(:name) }
+
+  describe "scheduling" do
+    let (:meeting) { FactoryGirl.create(:meeting) }
+    before do
+      @speaker.save
+      @speaker.schedule!(meeting)
+    end
+
+    describe "#schedule" do
+      it { should be_scheduled(meeting) }
+      its(:meetings) { should include(meeting) }
+    end
+
+    describe "#unschedule!" do
+      before { @speaker.unschedule!(meeting) }
+
+      it { should_not be_scheduled(meeting) }
+      its(:meetings) { should_not include(meeting) }
+    end
+  end
 end

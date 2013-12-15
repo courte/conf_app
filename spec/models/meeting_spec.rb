@@ -1,11 +1,7 @@
 require 'spec_helper'
 
 describe Meeting do
-	before { @meeting = Meeting.new(title: "How To Be Awesome",
-																	location: "Here",
-																	description: "Be me!",
-																	start_time: Time.now,
-																	end_time: Time.now + 1.day ) }
+	before { @meeting = FactoryGirl.create(:meeting) }
 
 	subject { @meeting }
 
@@ -16,27 +12,13 @@ describe Meeting do
   it { should respond_to(:end_time) }
   it { should respond_to(:speakers) }
 
-  context "when title is blank" do
-  	before { @meeting.title = "" }
-  	it { should_not be_valid }
-  end
-
-  context "when location is blank" do
-  	before { @meeting.location = "" }
-  	it { should_not be_valid }
-  end
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:location) }
+  it { should validate_presence_of(:start_time) }
+  it { should validate_presence_of(:end_time) }
 
   describe "times attributes" do
-	  context "when start_time is blank" do
-		 	before { @meeting.start_time = "" }
-		 	it { should_not be_valid }
-		end
-
-		context "when end_time is blank" do
-		 	before { @meeting.end_time = "" }
-		 	it { should_not be_valid }
-		end
-
+		
 		context "when start_time is before current time" do
 			
 			context "when creating" do
@@ -89,7 +71,7 @@ describe Meeting do
 
 	describe "create_duration" do
   	it "returns the length of Meeting in seconds" do
-  		length = 1.day.to_i
+  		length = (3.hours + 30.minutes).to_i
   		@meeting.create_duration
   		  		
   		expect(@meeting.duration).to eq length
@@ -99,22 +81,5 @@ describe Meeting do
   describe "duration" do
 		before { @meeting.save }
 		its(:duration) { should_not be_blank }
-	end
-
-	describe "speaker associations" do
-		before do
-			@meeting.save
-			FactoryGirl.create(:speaker, meeting: @meeting)
-			FactoryGirl.create(:speaker, meeting: @meeting)
-		end
-
-		it "should destroy associated speakers" do
-			speakers = @meeting.speakers.to_a
-			@meeting.destroy
-			expect(speakers).not_to be_empty
-			speakers.each do |speaker|
-				expect(Speaker.where(id: speaker.id)).to be_empty
-			end
-		end
 	end
 end
