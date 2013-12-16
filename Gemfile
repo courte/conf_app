@@ -15,6 +15,8 @@ gem 'sqlite3'
 
 group :development, :test do
 	gem 'rspec-rails'
+	gem 'guard-spork'
+	gem 'guard-rspec', require: false
 end
 
 # Gems used only for assets and not required
@@ -35,8 +37,6 @@ group :test do
 	gem 'capybara'
 	gem 'factory_girl_rails'
 	gem 'shoulda-matchers'
-	gem 'guard'
-	gem 'spork'
 end
 
 # To use ActiveModel has_secure_password
