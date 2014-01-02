@@ -8,8 +8,10 @@ describe "Meeting pages" do
 
 	describe "meeting page" do
 		let(:meeting) { FactoryGirl.create(:meeting) }
-		let!(:sp1) { FactoryGirl.create(:speaker, meeting: meeting) }
-		let!(:sp2) { FactoryGirl.create(:speaker, meeting: meeting, name: "Joe Schmoe") }
+		let!(:sp1) { FactoryGirl.create(:speaker) }
+		let!(:sp2) { FactoryGirl.create(:speaker, name: "Joe Schmoe") }
+		let!(:eng1) { sp1.engagements.build(meeting_id: meeting.id) }
+		let!(:eng2) { sp2.engagements.build(meeting_id: meeting.id) }
 
 		before { visit meeting_path(meeting) }
 

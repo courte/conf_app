@@ -29,7 +29,7 @@ describe Speaker do
       @speaker.schedule!(meeting)
     end
 
-    describe "#schedule" do
+    describe "#schedule!" do
       it { should be_scheduled(meeting) }
       its(:meetings) { should include(meeting) }
     end

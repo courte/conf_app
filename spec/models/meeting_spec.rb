@@ -10,6 +10,7 @@ describe Meeting do
   it { should respond_to(:location) }
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
+  it { should respond_to(:engagements) }
   it { should respond_to(:speakers) }
 
   it { should validate_presence_of(:title) }
