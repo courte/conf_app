@@ -15,12 +15,12 @@ If you need assistance loading these programs, I strongly recommend the step-by-
 ### Installation
 Installation is typical to most simple Rails apps. Run each of these commands in the terminal:
 
-    bundle install
+1. `bundle install`
 
-    bundle exec rake db:create
+2. `bundle exec rake db:create`
 
-    bundle exec rake db:populate
+3. `bundle exec rake db:populate`
 
-    rails s
+4. `rails s`
 
 Then find your local event app at [http://localhost:3000](http://localhost:3000).
