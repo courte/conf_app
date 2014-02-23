@@ -6,9 +6,10 @@ class SpeakersController < ApplicationController
 	end
 
 	def create
-		@meeting = Meeting.find(speaker_params[:meeting_id])
-		@speaker = @meeting.speakers.build(speaker_params)
+		@meeting = Meeting.find(params[:meeting_id])
+		@speaker = Speaker.new(speaker_params)
 		if @speaker.save
+			@speaker.schedule!(@meeting)
 			flash[:success] = "Speaker saved!"
 			redirect_to @meeting
 		else
@@ -20,8 +21,9 @@ class SpeakersController < ApplicationController
 	end
 
 	private
-		def speaker_params
-			params.require(:speaker).permit(:name, :bio, :moderator, :meeting_id,
-																			:user_id)
-		end
+
+	def speaker_params
+		params.require(:speaker).permit(:name, :bio, :moderator, :user_id)
+	end
+
 end
