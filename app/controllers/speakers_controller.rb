@@ -8,6 +8,7 @@ class SpeakersController < ApplicationController
 	def create
 		@meeting = Meeting.find(speaker_params[:meeting_id])
 		@speaker = @meeting.speakers.build(speaker_params)
+		@speaker.engagements.build(:meeting_id => @meeting.id)
 		if @speaker.save
 			flash[:success] = "Speaker saved!"
 			redirect_to @meeting
