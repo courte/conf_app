@@ -6,7 +6,7 @@
 		<%= f.label :moderator, "Moderator?" %>
 		<%= f.check_box  :moderator,	placeholder: "Moderator?" %>
 
-    <%= hidden_field_tag :value => @meeting.id %>
+    <%= hidden_field_tag "meeting_id", @meeting.id %>
 
 	</div>
 	<%= f.submit "Save Speaker", class: "btn btn-large btn-primary" %>
